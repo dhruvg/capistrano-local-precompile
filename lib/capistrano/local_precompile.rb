@@ -14,7 +14,8 @@ module Capistrano
         set(:turbosprockets_backup_dir) { "public/.assets" }
         set(:rsync_cmd)                 { "rsync -av" }
 
-        before "deploy:assets:precompile", "deploy:assets:prepare"
+        before "deploy", "deploy:assets:prepare"
+	after "deploy:finished", "deploy:assets:precompile"
         after "deploy:assets:precompile", "deploy:assets:cleanup"
 
         namespace :deploy do
