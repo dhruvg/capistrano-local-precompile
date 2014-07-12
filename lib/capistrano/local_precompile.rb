@@ -6,9 +6,8 @@ module Capistrano
     def self.load_into(configuration)
       configuration.load do
 
-      	set(:asset_env)	       { "RAILS_GROUPS=assets" }
-        set(:precompile_cmd)   { "RAILS_ENV=#{rails_env.to_s.shellescape} #{fetch(:asset_env)} #{rake} assets:precompile" }
-        set(:cleanexpired_cmd) { "RAILS_ENV=#{rails_env.to_s.shellescape} #{fetch(:asset_env)} #{rake} assets:clean_expired" }
+        set(:precompile_cmd)   { "#{rake} assets:precompile" }
+        set(:cleanexpired_cmd) { "#{rake} assets:clean_expired" }
         set(:assets_dir)       { "public/assets" }
 
         set(:turbosprockets_enabled)    { false }
