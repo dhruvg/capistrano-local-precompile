@@ -12,7 +12,7 @@ module Capistrano
 
         set(:turbosprockets_enabled)    { false }
         set(:turbosprockets_backup_dir) { "public/.assets" }
-        set(:rsync_cmd)                 { "rsync -av" }
+        set(:rsync_cmd)                 { "rsync -ave \"ssh -i #{ssh_options[:keys]}\"" }
 
         before "deploy", "deploy:assets:prepare"
         before "deploy:create_symlink", "deploy:assets:precompile"
