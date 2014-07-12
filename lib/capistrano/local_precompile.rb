@@ -15,7 +15,7 @@ module Capistrano
         set(:rsync_cmd)                 { "rsync -av" }
 
         before "deploy", "deploy:assets:prepare"
-	after "deploy:finished", "deploy:assets:precompile"
+        after "deploy:finished", "deploy:assets:precompile"
         after "deploy:assets:precompile", "deploy:assets:cleanup"
 
         namespace :deploy do
